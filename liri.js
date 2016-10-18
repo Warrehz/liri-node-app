@@ -107,28 +107,42 @@ var random = function() {
 
 };
 
-// logic to run function based on user choice
-if (action == 'my-tweets') {
+var liri = function(action, selection) {
 
-  getTweets();
+  // logic to run function based on user choice
+  if (action == 'my-tweets') {
+
+    getTweets();
+
+  }
+  else if (action == 'movie-this') {
+
+    movieThis(selection);
+
+  }
+  else if (action == 'spotify-this-song') {
+
+    spotifySong(selection);
+
+  }
+  else if (action == 'do-what-it-says') {
+
+    random();
+
+    var results = random();
+
+    var randomAction = results[0];
+
+    var randomSelection = results[1];
+
+    liri(randomAction, randomSelection);
+
+  } else {
+
+    console.log('Oops, try again.');
+
+  }
 
 }
-else if (action == 'movie-this') {
 
-  movieThis(selection);
-
-}
-else if (action == 'spotify-this-song') {
-
-  spotifySong(selection);
-
-}
-else if (action == 'do-what-it-says') {
-
-  random();
-
-} else {
-
-  console.log('Oops, try again.');
-
-}
+liri(action, selection);
